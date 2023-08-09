@@ -25,6 +25,8 @@ public:
     int getQty();
     double getWholesale();
     double getRetail();
+
+    void BookInfo();
 };
 
 

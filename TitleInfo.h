@@ -16,7 +16,7 @@ public:
 
     char *getIsbn();
 
-    void setIsbn(char *isbn);
+    void setISBN(char *isbn);
 
     char *getTitle();
 

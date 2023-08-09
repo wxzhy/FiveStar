@@ -13,4 +13,7 @@ add_executable(FiveStar main.cpp
         Report.cpp
         Report.h
         Management.cpp
-        Management.h)
+        Management.h
+        globals.h
+        menu.cpp
+)

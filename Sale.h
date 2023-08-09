@@ -9,7 +9,15 @@
 #include "BookData.h"
 
 class Sale: public BookData{
+protected:
+    int quantity;
+    double subtotal;
+public:
+    Sale(int index, int quantity);
 
+    Sale();
+
+    void print();
 };
 
 

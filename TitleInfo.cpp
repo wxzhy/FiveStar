@@ -28,7 +28,7 @@ void TitleInfo::setTitle(char *title) {
         strcpy(bookTitle, title);
 }
 
-void TitleInfo::setIsbn(char *isbn) {
+void TitleInfo::setISBN(char *isbn) {
     strcpy(this->isbn, isbn);
 }
 

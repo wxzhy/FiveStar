@@ -3,7 +3,6 @@
 //
 
 #include <cstring>
-#include <cctype>
 #include <iostream>
 #include "BookData.h"
 
@@ -33,28 +32,28 @@ void BookData::setDateAdded(char *dateAdded) {
         isdigit(dateAdded[8]) && isdigit(dateAdded[9]) && isdigit(dateAdded[10])) {
         strcpy(this->dateAdded, dateAdded);
     } else
-        cout << "æ—¥æœŸæ ¼å¼é”™è¯¯ï¼" << endl;
+        cout << "ÈÕÆÚ¸ñÊ½´íÎó£¡" << endl;
 }
 
 void BookData::setQty(int qty) {
     if (qty >= 0)
         qtyOnHand = qty;
     else
-        cout << "æ•°é‡ä¸èƒ½ä¸ºè´Ÿï¼" << endl;
+        cout << "ÊýÁ¿²»ÄÜÎª¸º£¡" << endl;
 }
 
 void BookData::setWholesale(double wholesale) {
     if (wholesale >= 0)
         this->wholesale = wholesale;
     else
-        cout << "æ‰¹å‘ä»·ä¸èƒ½ä¸ºè´Ÿï¼" << endl;
+        cout << "Åú·¢¼Û²»ÄÜÎª¸º£¡" << endl;
 }
 
 void BookData::setRetail(double retail) {
 if(retail>=0)
     this->retail=retail;
 else
-    cout<<"é›¶å”®ä»·ä¸èƒ½ä¸ºè´Ÿï¼"<<endl;
+    cout << "ÁãÊÛ¼Û²»ÄÜÎª¸º£¡" << endl;
 }
 
 char *BookData::getDateAdded() {
@@ -71,4 +70,15 @@ double BookData::getWholesale() {
 
 double BookData::getRetail() {
     return retail;
+}
+
+void BookData::BookInfo() {
+    cout << "ISBNºÅ: " << isbn << endl;
+    cout << "Êé   Ãû: " << bookTitle << endl;
+    cout << "×÷   Õß: " << author << endl;
+    cout << "³ö °æ Éç: " << publisher << endl;
+    cout << "½øÊéÈÕÆÚ: " << dateAdded << endl;
+    cout << "¿â ´æ Á¿: " << qtyOnHand << endl;
+    cout << "Åú ·¢ ¼Û: " << wholesale << endl;
+    cout << "Áã ÊÛ ¼Û: " << retail << endl;
 }
