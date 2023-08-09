@@ -33,3 +33,12 @@ void Sale::print() {
          << setprecision(1) << fixed << retail << "RMB " << setprecision(1) << fixed << subtotal << endl;
 
 }
+
+double Sale::getSubtotal() {
+    if (subtotal > 0)
+        return subtotal;
+    else {
+        cout << "小计不能为负！" << endl;
+        return 0;
+    }
+}

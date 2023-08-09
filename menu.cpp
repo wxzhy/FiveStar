@@ -2,6 +2,10 @@
 // Created by zhu123 on 2023/8/9.
 //
 #include <iostream>
+#include<ctime>
+#include"bookData.h"
+#include"menu.h"
+#include "globals.h"
 
 void saleMenu();
 
@@ -18,7 +22,7 @@ void mainMenu() {
     switch (choice) {
         case 1:
             cout << "收银模块" << endl;
-            saleMenu();
+            salesMenu();
             break;
         default:
             cout << "输入错误！" << endl;
@@ -26,11 +30,20 @@ void mainMenu() {
     }
 }
 
-void saleMenu() {
-    cout << ' ' * 30 << "前台销售模块" << endl;
+void salesMenu() {
+    cout << "                              前台销售模块" << endl;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    cout << "日期: " << 1900 + ltm->tm_year << "年" << 1 + ltm->tm_mon << "月" << ltm->tm_mday << "日" << endl;
 
 }
 
 void checkoutMenu() {
-    cout << endl;
+    double total = 0.0, tax = 0.0, money = 0.0;
+    for (auto &sale: sales) {
+        if (!sale.isEmpty())
+            total += sale.getSubtotal();
+    }
+    tax = total * taxRate;
+    money = total + tax;
 }

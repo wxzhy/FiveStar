@@ -75,9 +75,10 @@ void Management::setRetail(double retail, int index) {
 }
 
 bool Management::isEmpty(int index) {
-    if (index < 0 || index > books.size())
+    if (index < 0 || index > books.size()) {
         cout << "³¬³ö·¶Î§" << endl;
-    else
+        return true;
+    } else
         return books[index].isEmpty();
 }
 

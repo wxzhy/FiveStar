@@ -12,4 +12,5 @@
 using namespace std;
 extern vector<BookData> books;
 extern vector<Sale> sales;
+extern double taxRate;
 #endif //FIVESTAR_GLOBALS_H

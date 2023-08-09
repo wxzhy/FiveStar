@@ -17,6 +17,7 @@ public:
 
     Sale();
 
+    double getSubtotal();
     void print();
 };
 
