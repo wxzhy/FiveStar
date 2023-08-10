@@ -8,13 +8,13 @@
 
 class TitleInfo {
 protected:
-    char isbn[14], bookTitle[51], author[31], publisher[31];
+    char bookTitle[51], author[31], publisher[31], isbn[14];
 public:
     TitleInfo(char *isbn, char *title, char *author, char *pub);
 
     TitleInfo();
 
-    char *getIsbn();
+    char *getISBN();
 
     void setISBN(char *isbn);
 

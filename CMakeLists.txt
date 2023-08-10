@@ -17,4 +17,6 @@ add_executable(FiveStar main.cpp
         globals.h
         menu.cpp
         menu.h
+        utils.h
+        utils.cpp
 )

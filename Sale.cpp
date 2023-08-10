@@ -42,3 +42,17 @@ double Sale::getSubtotal() {
         return 0;
     }
 }
+
+Sale::Sale(BookData book, int quantity) {
+    if (quantity <= 0)
+        cout << "数量必须大于0！" << endl;
+    else if (book.getQty() <= 0)
+        cout << "库存不足！" << endl;
+    else if (quantity > book.getQty())
+        cout << "数量超过库存！" << endl;
+    else {
+        this->quantity = quantity;
+        book.setQty(book.getQty() - quantity);
+        subtotal = quantity * book.getRetail();
+    }
+}

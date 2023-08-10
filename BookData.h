@@ -7,7 +7,10 @@
 
 
 #include "TitleInfo.h"
+#include <ostream>
+#include <istream>
 
+using namespace std;
 class BookData: public TitleInfo{
 protected:
     char dateAdded[11];
@@ -25,8 +28,13 @@ public:
     int getQty();
     double getWholesale();
     double getRetail();
-
     void BookInfo();
+
+    void editBook();
+
+    friend istream &operator>>(istream &in, BookData &book);
+
+    friend ostream &operator<<(ostream &out, BookData &book);
 };
 
 

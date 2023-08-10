@@ -40,7 +40,7 @@ void TitleInfo::setPub(char *pub) {
     strcpy(publisher, pub);
 }
 
-char *TitleInfo::getIsbn() {
+char *TitleInfo::getISBN() {
     return isbn;
 }
 

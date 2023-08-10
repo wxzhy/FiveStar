@@ -7,7 +7,20 @@
 
 
 class Report {
+public:
+    void menu();
 
+    void listByWholeSale();
+
+    void listByRetail();
+
+    void listByQty();
+
+    void listByTotal();
+
+    void listByDate();
+
+    void display();
 };
 
 

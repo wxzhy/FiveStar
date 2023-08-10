@@ -7,6 +7,7 @@
 
 
 class Management {
+public:
     void setTitle(char *title, int index);
 
     void setISBN(char *isbn, int index);
@@ -27,6 +28,23 @@ class Management {
 
     void removeBook(int index);
 
+    void lookUpBook();
+
+    void lookUp();
+
+    void lookUpKeyword();
+
+    void lookUpFuzzy();
+
+    void editBook();
+
+    void deleteBook();
+
+    void removeBook();
+
+    void menu();
+
+    void addBook();
 };
 
 
