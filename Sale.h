@@ -15,8 +15,6 @@ protected:
 public:
     Sale(int index, int quantity);
 
-    Sale(BookData book, int quantity);
-
     Sale();
 
     double getSubtotal();

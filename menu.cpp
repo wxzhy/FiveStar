@@ -34,7 +34,7 @@ void mainMenu() {
                 break;
             case '3':
                 Report().menu();
-                return;
+                break;
             case '4':
                 return;
             default:
@@ -80,16 +80,24 @@ void totalMenu() {
     time_t now = time(0);
     tm *ltm = localtime(&now);
     cout << "日期: " << 1900 + ltm->tm_year << "年" << 1 + ltm->tm_mon << "月" << ltm->tm_mday << "日" << endl;
+    cout << setw(10) << left << "数量"
+         << setw(15) << left << "ISBN号"
+         << setw(30) << left << "书名"
+         << setw(10) << left << "单价"
+         << setw(10) << left << "金额" << endl;
     double total = 0.0, tax = 0.0, money = 0.0;
     for (auto &sale: sales) {
         if (!sale.isEmpty())
+            sale.print();
             total += sale.getSubtotal();
     }
     tax = total * taxRate;
     money = total + tax;
-    cout << "销售合计: RMB " << setprecision(1) << total << endl;
-    cout << "零售税:  RMB " << setprecision(1) << tax << endl;
-    cout << "应付总额: RMB " << setprecision(1) << money << endl;
+    cout << "--------------------------------------------------------------------------------------------" << endl;
+    cout << "销售合计: RMB " << setprecision(1) << fixed << total << endl;
+    cout << "零售税:  RMB " << setprecision(1) << fixed << tax << endl;
+    cout << "应付总额: RMB " << setprecision(1) << fixed << money << endl;
+    sales.clear();
 }
 
 void header(const char *str) {
@@ -102,22 +110,22 @@ void finder() {
     cout << endl << "输入ISBN: ";
     string isbn;
     cin >> isbn;
-    for (auto &book: books) {
-        if (book.getISBN() == isbn && !book.isEmpty()) {
-            if (book.getQty() <= 0)
+    for (int i = 0; i < books.size(); ++i) {
+        if (books[i].getISBN() == isbn && !books[i].isEmpty()) {
+            if (books[i].getQty() <= 0)
                 cout << "该书已售完" << endl;
             else {
                 cout << "找到以下书:" << endl;
-                book.BookInfo();
+                books[i].BookInfo();
                 cout << "输入购买数量: ";
                 int qty;
                 cin >> qty;
                 if (qty <= 0) {
                     cout << "输入错误! " << endl;
-                } else if (qty > book.getQty())
+                } else if (qty > books[i].getQty())
                     cout << "库存不足！" << endl;
                 else {
-                    sales.emplace_back(book, qty);
+                    sales.emplace_back(i, qty);
                     cout << "添加成功" << endl;
                 }
             }

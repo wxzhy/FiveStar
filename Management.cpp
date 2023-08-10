@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include <iomanip>
 #include "Management.h"
 #include "globals.h"
 #include "menu.h"
@@ -238,32 +239,38 @@ void Management::removeBook() {
 }
 
 void Management::menu() {
-    header("书库管理模块");
-    cout << "1. 查找某本书的信息" << endl;
-    cout << "2. 增加书" << endl;
-    cout << "3. 修改书的信息" << endl;
-    cout << "4. 删除书" << endl;
-    cout << "5. 返回到主菜单" << endl;
-    cout << "输入选择(1~5): ";
-    char choice = getch();
-    cout << endl;
-    switch (choice) {
-        case '1':
-            lookUp();
-            break;
-        case '2':
-            addBook();
-            break;
-        case '3':
-            editBook();
-            break;
-        case '4':
-            deleteBook();
-            break;
-        case '5':
-            return;
-        default:
-            cout << "输入错误!" << endl;
+    while (true) {
+        header("书库管理模块");
+        cout << "1. 查找某本书的信息" << endl;
+        cout << "2. 增加书" << endl;
+        cout << "3. 修改书的信息" << endl;
+        cout << "4. 删除书" << endl;
+        cout << "5. 修改税率" << endl;
+        cout << "6. 返回到主菜单" << endl;
+        cout << "输入选择(1~6): ";
+        char choice = getch();
+        cout << endl;
+        switch (choice) {
+            case '1':
+                lookUp();
+                break;
+            case '2':
+                addBook();
+                break;
+            case '3':
+                editBook();
+                break;
+            case '4':
+                deleteBook();
+                break;
+            case '5':
+                changeTax();
+                break;
+            case '6':
+                return;
+            default:
+                cout << "输入错误!" << endl;
+        }
     }
 
 }
@@ -335,4 +342,19 @@ void Management::addBook() {
             cout << "输入错误!" << endl;
             return;
     }
+}
+
+void Management::changeTax() {
+    cout << "当前税率为: " << setprecision(2) << fixed << taxRate << endl;
+    cout << "请输入新的税率: ";
+    double tax;
+    cin >> tax;
+    if (tax <= 0) {
+        cout << "输入错误!" << endl;
+        return;
+    } else {
+        taxRate = tax;
+        cout << "修改成功!" << endl;
+    }
+
 }

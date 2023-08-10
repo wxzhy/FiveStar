@@ -11,4 +11,6 @@ void loadBooks();
 
 void saveBooks();
 
+void check();
+
 #endif //FIVESTAR_UTILS_H

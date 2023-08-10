@@ -45,6 +45,8 @@ public:
     void menu();
 
     void addBook();
+
+    void changeTax();
 };
 
 

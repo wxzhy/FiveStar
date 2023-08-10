@@ -29,8 +29,11 @@ Sale::Sale() {
 }
 
 void Sale::print() {
-    cout << "  " << setw(6) << quantity << setw(13) << isbn << setw(20) << bookTitle << "RMB " << setw(8)
-         << setprecision(1) << fixed << retail << "RMB " << setprecision(1) << fixed << subtotal << endl;
+    cout << setw(10) << left << quantity
+         << setw(15) << left << isbn
+         << setw(30) << left << bookTitle << "RMB "
+         << setw(6) << fixed << left << setprecision(2) << retail << "RMB "
+         << setw(6) << fixed << left << setprecision(2) << subtotal << endl;
 
 }
 
@@ -43,16 +46,3 @@ double Sale::getSubtotal() {
     }
 }
 
-Sale::Sale(BookData book, int quantity) {
-    if (quantity <= 0)
-        cout << "数量必须大于0！" << endl;
-    else if (book.getQty() <= 0)
-        cout << "库存不足！" << endl;
-    else if (quantity > book.getQty())
-        cout << "数量超过库存！" << endl;
-    else {
-        this->quantity = quantity;
-        book.setQty(book.getQty() - quantity);
-        subtotal = quantity * book.getRetail();
-    }
-}

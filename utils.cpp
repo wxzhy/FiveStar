@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 #include <fstream>
+#include <conio.h>
 #include "globals.h"
 
 using namespace std;
@@ -28,8 +29,9 @@ void loadBooks() {
             BookData book;
             in >> book;
             books.emplace_back(book);
-            cout << "加载成功！" << endl;
         }
+        cout << "加载成功！" << endl;
+        in.close();
     }
 }
 
@@ -40,9 +42,33 @@ void saveBooks() {
         exit(1);
     } else {
         for (auto &book: books) {
-            out << book;
+            if (!book.isEmpty())
+                out << book;
         }
         cout << "保存成功！" << endl;
     }
+    out.close();
 }
 
+void check() {
+    ifstream in("books.txt");
+    if (in.fail()) {
+        in.close();
+        cout << "文件不存在！" << endl;
+        cout << "是否创建新文件？(Y/N):" << endl;
+        char choice = getch();
+        if (toupper(choice) == 'Y') {
+            ofstream out("books.txt");
+            if (out.fail()) {
+                cout << "文件创建失败！" << endl;
+                exit(1);
+            }
+            out.close();
+            cout << "文件创建成功！" << endl;
+        } else {
+            cout << "文件创建失败！" << endl;
+            exit(1);
+        }
+    } else
+        in.close();
+}
